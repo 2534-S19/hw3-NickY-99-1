@@ -10,7 +10,10 @@ int main(void)
     unsigned int count1 = 0;
 
     // TODO: Declare the variables that main uses to interact with your state machine.
-    typedef enum {Stable_P, Tran_PtoR, Stable_R, Tran_RtoP} buttom_state_t;
+    typedef enum
+    {
+        Stable_P, Tran_PtoR, Stable_R, Tran_RtoP
+    } buttom_state_t;
     static buttom_state_t currentState = Stable_P;
 
     // Stops the Watchdog timer.
@@ -25,7 +28,7 @@ int main(void)
     // YOU MUST WRITE THIS FUNCTION IN myTimer.c
     initTimer(TIMER32_1_BASE, TIMER1_PRESCALER, TIMER1_COUNT);
 
-    while(1)
+    while (1)
     {
         // Update the color of LED2 using count0 as the index.
         // YOU MUST WRITE THIS FUNCTION BELOW.
@@ -40,87 +43,81 @@ int main(void)
         {
             count0++;
             Timer32_setCount(TIMER32_0_BASE, 1);
-
-            changeLaunchpadLED2(count0)
+            Timer32_startTimer(TIMER32_0_BASE, 1);
+            changeLaunchpadLED2(count0);
         }
-
 
         // TODO: If Timer1 has expired, update the button history from the pushbutton value.
         // YOU MUST WRITE timer1expired IN myTimer.c
-        if (timer1Expired())
-
+    //if (timer1Expired())
 
         // TODO: Call the button state machine function to check for a completed, debounced button press.
         // YOU MUST WRITE THIS FUNCTION BELOW.
 
-
-
         // TODO: If a completed, debounced button press has occurred, increment count1.
 
-
-
-    }
+}
 }
 
 void initBoard()
 {
-    WDT_A_hold(WDT_A_BASE);
+WDT_A_hold(WDT_A_BASE);
 }
 
 // TODO: Map the value of a count variable to a color for LED2.
 // Since count is an unsigned integer, you can mask the value in some way.
 void changeLaunchpadLED2(unsigned int count)
 {
-    unsigned int num = count%8;
-    switch (num) {
-        case 0:
-            void turnOff_LaunchpadLED2Red();
-            void turnOff_LaunchpadLED2Green();
-            void turnOff_LaunchpadLED2Blue();
-            break;
-        case 1:
-            void turnOn_LaunchpadLED2Red();
-                        void turnOff_LaunchpadLED2Green();
-                        void turnOff_LaunchpadLED2Blue();
-            break;
-        case 2:
-            void turnOff_LaunchpadLED2Red();
-                        void turnOn_LaunchpadLED2Green();
-                        void turnOff_LaunchpadLED2Blue();
-            break;
-        case 3:
-            void turnOn_LaunchpadLED2Red();
-                        void turnOn_LaunchpadLED2Green();
-                        void turnOff_LaunchpadLED2Blue();
-            break;
-        case 4:
-            void turnoff_LaunchpadLED2Red();
-                        void turnOff_LaunchpadLED2Green();
-                        void turnOn_LaunchpadLED2Blue();
-            break;
-        case 5:
-            void turnOn_LaunchpadLED2Red();
-                        void turnOff_LaunchpadLED2Green();
-                        void turnOn_LaunchpadLED2Blue();
-                    break;
-        case 6:
-            void turnOff_LaunchpadLED2Red();
-                        void turnOn_LaunchpadLED2Green();
-                        void turnOff_LaunchpadLED2Blue();
-                    break;
-        case 7:
-            void turnOn_LaunchpadLED2Red();
-                        void turnOn_LaunchpadLED2Green();
-                        void turnOn_LaunchpadLED2Blue();
-                    break;
+unsigned int num = count % 8;
+switch (num)
+{
+case 0:
+    turnOff_LaunchpadLED2Red();
+    turnOff_LaunchpadLED2Green();
+    turnOff_LaunchpadLED2Blue();
+    break;
+case 1:
+    turnOn_LaunchpadLED2Red();
+    turnOff_LaunchpadLED2Green();
+    turnOff_LaunchpadLED2Blue();
+    break;
+case 2:
+    turnOff_LaunchpadLED2Red();
+    turnOn_LaunchpadLED2Green();
+    turnOff_LaunchpadLED2Blue();
+    break;
+case 3:
+    turnOn_LaunchpadLED2Red();
+    turnOn_LaunchpadLED2Green();
+    turnOff_LaunchpadLED2Blue();
+    break;
+case 4:
+    turnOff_LaunchpadLED2Red();
+    turnOff_LaunchpadLED2Green();
+    turnOn_LaunchpadLED2Blue();
+    break;
+case 5:
+    turnOn_LaunchpadLED2Red();
+    turnOff_LaunchpadLED2Green();
+    turnOn_LaunchpadLED2Blue();
+    break;
+case 6:
+    turnOff_LaunchpadLED2Red();
+    turnOn_LaunchpadLED2Green();
+    turnOff_LaunchpadLED2Blue();
+    break;
+case 7:
+    turnOn_LaunchpadLED2Red();
+    turnOn_LaunchpadLED2Green();
+    turnOn_LaunchpadLED2Blue();
+    break;
 
-
-    }
+}
 }
 
 // TODO: Maybe the value of a count variable to a color for the Boosterpack LED
 // This is essentially a copy of the previous function, using a different LED
-void changeBoosterpackLED(unsigned int count)
+/*void changeBoosterpackLED(unsigned int count)
 {
 
 }
@@ -129,10 +126,9 @@ void changeBoosterpackLED(unsigned int count)
 // The button state machine should return true or false to indicate a completed, debounced button press.
 bool fsmBoosterpackButtonS1(unsigned int buttonhistory)
 {
-    bool pressed = false;
+bool pressed = false;
 
-
-    return pressed;
+return pressed;
 }
-
-
+*/
+//
